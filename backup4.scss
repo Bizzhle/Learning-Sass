@@ -1,0 +1,132 @@
+// Lists
+$background-colors-list: #4BC2A5 #606F40 #6648CA #6B6022;
+$border-colors-list: #ff9900 #77ff66 #73C227 #7BAFC2;
+$colors-list: #111 #222 #333 #444;
+
+$font-list: 'Raleway', 'Dosis', 'Lato';
+// three coma separated elements
+
+$pad-list: 10px 8px 12px;
+// three space separated elements
+
+$multi-list: 'Roboto', 15px 1.3em;
+// this multi-list has two lists
+
+@each $current-color in $colors-list {
+    $i: index($colors-list, $current-color);
+    .stuff-#{$i} {
+        color: $current-color;
+        background-color: nth($background-colors-list, $i);
+        border: 1px solid nth($border-colors-list, $i);
+    }
+}
+
+h1 {
+    background-color: nth($background-colors-list, $i);
+}
+
+// Maps#
+
+$primary-colors: ("red": "#ff0000", "green": "#00ff00", "blue": "#0000ff");
+
+@each $color-name, $color-code in $primary-colors {
+    .color-#{$color-name} {
+        background: $color-code;
+    }
+}
+
+// Root
+// not regularly used, nest itself outside and doesnt include anything in the group
+
+
+.btn {
+    background: #ededed;
+    border: 1px solid #555;
+    color: #555;
+    padding: 1em 2em;
+
+    font: {
+        family: 'Open Sans Condensed', sans-serif;
+        size: 1rem;
+    }
+
+    @at-root a#{&} {
+        text-decoration: none;
+    }
+}
+
+.parent {
+    font-size: 1rem;
+    padding: 1em 2em;
+
+    @at-root .likely-modified {
+        font-size: 1.5em;
+    }
+}
+
+// functions
+
+$main-color: #6dcff6;
+$darken-color: darken($main-color, 20%);
+$lighter-color: lighten($main-color, 20%);
+$opaque-color: opacify($main-color, 0.5);
+$transparent-color: transparentize($main-color, 0.3);
+
+$list: b, c, d, e, f;
+$new-list: prepend($list, a); // returns a, b, c, d, e, f
+
+
+$list: a, b, c, d z, e, a, f;
+$first-index: index($list, a); // 1
+$last-index: last-index($list, a); // returns 6 - skips the first a
+$last-index: last-index($list, z); // null - because does not exist
+
+$list: a, b, c, d, e, f;
+$new-list: slice($list, 3, 5); // c,d,e
+
+$list: a, b, c, d, e, f;
+$new-list: to-string($list); // returns abcdefgh
+$new-list: to-string($list, '-');  // returns a-b-c-d-e-f-g-h
+
+.brand-button {
+    background: $main-color;
+}
+
+.brand-button:hover {
+    background: $lighter-color;
+}
+
+.brand-button:visited {
+    background: $darken-color;
+}
+
+.modal.focus {
+    background: $main-color;
+}
+
+.modal.blur {
+    background: $transparent-color;
+}
+
+.main-content {
+    background: $opaque-color;
+
+}
+
+// Creating and usingfunctions
+
+@function my-calc-function($some-num, $another-num) {
+    @return $some-num + $another-num
+}
+
+@function calc-percent($target, $container) {
+    @return ($target / $container) * 100%
+}
+
+.container {
+    padding: my-calc-function(100px, 200px)
+}
+
+.inner-container {
+    width: calc-percent(250px, 550px )
+}

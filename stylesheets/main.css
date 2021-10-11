@@ -1,0 +1,97 @@
+p {
+  color: black; }
+
+p {
+  border: 1px solid; }
+
+.firstClass {
+  color: red; }
+
+.anotherClass {
+  color: white; }
+
+.item-1 {
+  width: 2em; }
+
+.item-2 {
+  width: 4em; }
+
+.item-3 {
+  width: 6em; }
+
+.usr-avatar {
+  background-image: url("/img/bob.png"); }
+
+.usr-avatar {
+  background-image: url("/img/john.png"); }
+
+.usr-avatar {
+  background-image: url("/img/bill.png"); }
+
+.usr-avatar {
+  background-image: url("/img/mike.png"); }
+
+.bob-picture {
+  background-image: url("/img/bob.png"); }
+
+.john-picture {
+  background-image: url("/img/john.png"); }
+
+.bill-picture {
+  background-image: url("/img/bill.png"); }
+
+.mike-picture {
+  background-image: url("/img/mike.png"); }
+
+.alert-button {
+  color: yellow;
+  background-color: red; }
+
+.submit-button {
+  color: white;
+  background-color: green; }
+
+.back-button {
+  color: blue;
+  background-color: transparent; }
+
+.col-1 {
+  width: 8.3333333333px; }
+
+.col-2 {
+  width: 16.6666666667px; }
+
+.col-3 {
+  width: 25px; }
+
+.col-4 {
+  width: 33.3333333333px; }
+
+.col-5 {
+  width: 41.6666666667px; }
+
+.col-6 {
+  width: 50px; }
+
+.col-7 {
+  width: 58.3333333333px; }
+
+.col-8 {
+  width: 66.6666666667px; }
+
+.col-9 {
+  width: 75px; }
+
+.col-10 {
+  width: 83.3333333333px; }
+
+.col-11 {
+  width: 91.6666666667px; }
+
+.col-12 {
+  width: 100px; }
+
+.col-13 {
+  width: 108.3333333333px; }
+
+/*# sourceMappingURL=main.css.map */

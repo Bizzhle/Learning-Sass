@@ -1,0 +1,151 @@
+// inheritance with extend
+
+.message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+}
+
+.success {
+    @extend .message;
+    border-color: green;
+}
+
+.error {
+    @extend .message;
+    border-color: red;
+
+}
+
+.warning {
+    @extend .message;
+    border-color: yellow;
+}
+
+// multiple extend
+
+.error1 {
+    border: 1px #f00;
+    background-color: #fdd;
+}
+
+.attention {
+    font-size: 3em;
+    background-color: #ff0;
+}
+
+.seriousError {
+    @extend .error1;
+    @extend .attention;
+    border-width: 3px;
+}
+
+// chaining Extends
+
+.error2 {
+    border: 1px solid #f00;
+    background-color: #fdd;
+}
+
+.seriousError1 {
+    @extend .error2;
+    border-width: 3px;
+}
+
+.criticalError {
+    @extend .seriousError1;
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+
+}
+
+// placeholder selectors
+// wont compile untill attached with extend
+
+%foo {
+    color: red;
+}
+
+.bar {
+    @extend %foo;
+    background-color: blue;
+}
+
+.baz {
+    @extend %foo;
+    background: yellow;
+}
+
+// placeholder extend vs Mixin
+// Only use mixins when you have arguments
+@mixin hide-text {
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+%hide-text {
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.foo {
+    @include hide-text()
+}
+
+.bar {
+    @extend %hide-text
+}
+
+@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
+.foo {
+    @include border-radius(5px)
+}
+
+// NEXTING nexted-rules
+
+#main {
+    color: #0f0;
+    width: 97%;
+
+    p, div {
+        font-size: 2em;
+        a {
+            font-weight: bold;
+        }
+    }
+
+    pre {
+        font-size: 3em;
+    }
+}
+
+// & connects the declarations to direct selector
+a {
+    font-weight: bold;
+    text-decoration: none;
+    &:hover { text-decoration: underline;}
+    body.firefox & { font-weight: normal;}
+}
+
+#main {
+    color: black;
+    &-sidebar {
+        border: 1px solid;
+    }
+}
+
+// NESTING nexted-properties
+
+.funky {
+    font: {
+        family: fantasy;
+        size: 30em;
+        weight: bold;
+    }
+}

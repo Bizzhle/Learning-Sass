@@ -1,0 +1,89 @@
+
+// if else and else if
+
+$type: orc;
+
+p {
+    @if $type == human {
+        color: blue;
+    } @else if $type == elf {
+        color: red;
+
+    } @else if $type == monster {
+        color: white;
+    } @else {
+        color: black;
+    }
+}
+
+p {
+    @if 1+1 == 2 { border: 1px solid;}
+    @if 5 < 3 { border: 2px dotted;}
+
+}
+
+@mixin  test($condition ) {
+    $color: if($condition, blue, red);
+    color: $color
+}
+
+.firstClass {
+    @include test(null)
+}
+
+@mixin txt($weight) {
+    color: white;
+    @if $weight == bold { font-weight: bold}
+}
+
+.anotherClass {
+    @include txt(semi-bold)
+}
+
+// loops
+
+@for $i from 1 through 3 {
+    .item-#{$i} {
+        width: 2em * $i
+    }
+}
+
+// each loops
+
+@each $usr in bob, john, bill, mike {
+    .#{usr}-avatar {
+        background-image: url('/img/#{$usr}.png');
+    }
+}
+
+$ppl: ( usr1:bob, usr2:john, usr3:bill, usr4:mike);
+
+@each $key, $usr in $ppl {
+    .#{$usr}-picture {
+        background-image: url('/img/#{$usr}.png');
+    }
+}
+
+$alt: alert, yellow, red;
+$sub: submit, white, green;
+$bck: back, blue, transparent;
+
+@each $type, $txt, $back in $alt, $sub, $bck {
+    .#{$type}-button {
+        
+        color: $txt;
+        background-color: $back;
+    }
+}
+
+// while
+
+$x: 1;
+
+@while $x <= 13 {
+    .col-#{$x} {
+        width: 100/12 * $x + px;
+    }
+    $x: $x + 1;
+
+};
